@@ -1,0 +1,1 @@
+bindkey '^[@' zaw-cdr 

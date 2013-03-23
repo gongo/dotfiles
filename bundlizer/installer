@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+  if [ -d $HOME/.bundlizer ] ; then
+      echo "bundlizer is already installed."
+      exit 0
+  fi
+
+# Install bundlizer
+
+   curl -L git.io/bundlizer-install | sh

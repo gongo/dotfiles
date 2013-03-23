@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ ! -d $HOME/.bundlizer ] ; then
+    echo "bundlizer is not installed"
+else
+    source "$HOME/.bundlizer/etc/bashrc"
+fi

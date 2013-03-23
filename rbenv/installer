@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+source $(cd $(dirname $0) ; pwd)/setup
+rbenv_plugin_dir=$rbenv_root/plugins
+
+
+  if [ -d $rbenv_root ] ; then
+      echo "rbenv is already installed."
+      exit 0
+  fi
+
+# Install rbenv
+
+   git clone git://github.com/sstephenson/rbenv.git $rbenv_root
+
+# Install rbenv plugins
+
+  local plugins
+  plugins=(
+      "rkh/rbenv-update"
+      "sstephenson/rbenv-default-gems"
+      "sstephenson/rbenv-gem-rehash"
+      "sstephenson/ruby-build"
+  )
+
+  for p in $plugins
+  do
+      git clone git://github.com/${p}.git $rbenv_plugin_dir/$(basename $p)
+  done
+
+  cat <<EOF > $rbenv_root/default-gems
+bundler
+pry
+EOF
