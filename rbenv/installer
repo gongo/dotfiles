@@ -1,17 +1,15 @@
 #!/usr/bin/env zsh
 
-source $(cd $(dirname $0) ; pwd)/setup
-rbenv_plugin_dir=$rbenv_root/plugins
+rbenv_plugin_dir=$HOME/.rbenv/plugins
 
-
-  if [ -d $rbenv_root ] ; then
+  if [ -d $HOME/.rbenv ] ; then
       echo "rbenv is already installed."
       exit 0
   fi
 
 # Install rbenv
 
-   git clone git://github.com/sstephenson/rbenv.git $rbenv_root
+   git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
 
 # Install rbenv plugins
 
@@ -28,7 +26,7 @@ rbenv_plugin_dir=$rbenv_root/plugins
       git clone git://github.com/${p}.git $rbenv_plugin_dir/$(basename $p)
   done
 
-  cat <<EOF > $rbenv_root/default-gems
+  cat <<EOF > $HOME/.rbenv/default-gems
 bundler
 pry
 EOF

@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+  if [ -d $HOME/.phpenv ] ; then
+      echo "phpenv is already installed."
+      exit 0
+  fi
+
+# Install phpenv
+
+    git clone git://github.com/phpenv/phpenv.git $HOME/.phpenv
+
+# checkout master branch
+
+    # http://longkey1.net/blog/2013/01/31/another-phpenv/
+    pushd $HOME/.phpenv
+    git checkout -t origin/master
+    popd

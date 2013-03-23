@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-source $(cd $(dirname $0) ; pwd)/setup
-
-if [ ! -d $rbenv_root ] ; then
+if [ ! -d $HOME/.rbenv ] ; then
     echo "rbenv is not installed"
 else
     path=($HOME/.rbenv/bin $path)

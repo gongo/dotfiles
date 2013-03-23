@@ -41,3 +41,4 @@
 
    source $DOTFILES_DIR/rbenv/env
    source $DOTFILES_DIR/bundlizer/env
+   source $DOTFILES_DIR/phpenv/env
