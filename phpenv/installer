@@ -1,17 +1,78 @@
 #!/usr/bin/env zsh
 
-  if [ -d $HOME/.phpenv ] ; then
-      echo "phpenv is already installed."
-      exit 0
-  fi
+    if [ -d $HOME/.phpenv ] ; then
+        echo "phpenv is already installed."
+        exit 0
+    fi
 
-# Install phpenv
+# # Install phpenv
 
-    git clone git://github.com/phpenv/phpenv.git $HOME/.phpenv
+    curl https://raw.github.com/CHH/phpenv/master/bin/phpenv-install.sh | bash
 
-# checkout master branch
+# # Install rbenv plugins
 
-    # http://longkey1.net/blog/2013/01/31/another-phpenv/
-    pushd $HOME/.phpenv
-    git checkout -t origin/master
-    popd
+    () {
+        local plugins
+        plugins=(
+            "CHH/php-build"
+        )
+
+        for p in $plugins
+        do
+            git clone git://github.com/${p}.git $HOME/.phpenv/plugins/$(basename $p)
+        done
+    }
+
+# # php-build configuration
+
+    () {
+        local phpbuild_dir=$HOME/.phpenv/plugins/php-build
+        local php_config=$phpbuild_dir/share/php-build/default_configure_options
+
+        # add subcommand "phpenv install"
+        curl https://raw.github.com/hnw/php-build/plugin-to-chh-phpenv/bin/rbenv-install \
+            > $phpbuild_dir/bin/rbenv-install
+        chmod 755 $phpbuild_dir/bin/rbenv-install
+        
+        # setting default configure options
+        mv $php_config $php_config.orig
+        cat <<EOF > $php_config
+--disable-debug
+--enable-cgi
+--enable-exif
+--enable-fpm
+--enable-ftp
+--enable-mbstring
+--enable-pcntl
+--enable-shmop
+--enable-sockets
+--enable-sysvsem
+--enable-sysvshm
+--enable-xmlreader
+--enable-zip
+--with-curl
+--with-gd
+--with-kerberos
+--with-mcrypt
+--with-openssl
+--with-pdo-pgsql
+--with-pgsql
+--with-readline
+--with-tidy
+--with-xmlrpc
+--with-xsl
+--with-zlib
+--without-pear
+EOF
+
+        # When OSX (with Homebrew)
+        if [ $(uname) = "Darwin" ] ; then
+            local params
+            params=("openssl" "readline" "mcrypt" "zlib")
+            for p in $params
+            do
+                sed -i -e "s|--with-${p}|--with-${p}=$(brew --prefix $p)|" $php_config
+            done
+        fi
+    }
+
