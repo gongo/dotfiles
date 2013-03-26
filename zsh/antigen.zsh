@@ -14,3 +14,6 @@ antigen-apply
 for s in $DOTFILES_ZSH_DIR/antigen/*.zsh ; do
     source $s
 done
+
+# disable auto correct
+unsetopt correct_all
