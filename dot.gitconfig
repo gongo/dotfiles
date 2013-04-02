@@ -1,0 +1,16 @@
+[user]
+	name = Wataru MIYAGUNI
+	email = gonngo@gmail.com
+[alias]
+	st = status -sb
+	co = checkout
+	ci = commit
+[push]
+	default = tracking
+[pull]
+	rebase = true
+[color]
+	status = auto
+	ui = auto
+	diff = auto
+	branch = auto
