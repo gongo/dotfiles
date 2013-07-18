@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-if [ ! -d $HOME/.phpenv ] ; then
-    echo "phpenv is not installed"
-else
-    path=($HOME/.phpenv/bin $path)
-    eval "$(phpenv init -)"
-fi
