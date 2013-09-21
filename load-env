@@ -1,0 +1,12 @@
+# -*-sh-*-
+
+##
+
+    if [ -f $DOTFILES_DIR/dot.zshenv.$(uname -s) ] ; then
+        source $DOTFILES_DIR/dot.zshenv.$(uname -s)
+    fi
+
+##
+
+    source $DOTFILES_DIR/rbenv/env
+    source $DOTFILES_DIR/bundlizer/env

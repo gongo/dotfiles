@@ -1,3 +1,5 @@
+# -*-sh-*-
+
 autoload -U compinit
 compinit
 
@@ -11,6 +13,18 @@ zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:default' menu select=1
 
+# 補完関数の表示を強化する
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
+zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
+zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+
+# マッチ種別を別々に表示
+zstyle ':completion:*' group-name ''
+
 fpath=(~/.zsh/functions/ $fpath)
 
 ####################
@@ -23,7 +37,6 @@ export EDITOR="emacs -q -nw"
 export CVS_RSH=ssh
 export CVSEDITOR=$EDITOR
 
-alias hg="hg --encoding=utf8"
 alias -g L='| lv'
 alias -g G='| grep'
 alias -g X='| xargs'
@@ -87,5 +100,4 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
-source $DOTFILES_DIR/zsh/interactive
-source $DOTFILES_DIR/bundlizer/interactive
+source $DOTFILES_DIR/load-interactive

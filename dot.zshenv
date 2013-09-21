@@ -17,14 +17,16 @@
    export LC_ALL=$LANG
    export SHELL=`which zsh`
 
-   # 重複する path を削除
-   typeset -U path
+   [ -z "$ld_library_path" ] && typeset -T LD_LIBRARY_PATH ld_library_path
+   [ -z "$include" ] && typeset -T INCLUDE include
+
+   # 重複する path を削除 & 即座に export
+   typeset -xU path cdpath fpath manpath ld_library_path include
 
    path=(
-       $HOME/.homebrew/Cellar/emacs/24.2/bin
        $HOME/app/bin
        $HOME/bin
-       $HOME/.homebrew/bin # for OS X
+       $HOME/.homebrew/bin
        /usr/local/bin
        /usr/bin
        /usr/sbin
@@ -34,10 +36,10 @@
        $path
    )
 
-   # 存在しない path の削除
-   path=(${^path}(N))
-
 ##
 
-   source $DOTFILES_DIR/rbenv/env
-   source $DOTFILES_DIR/bundlizer/env
+   source $DOTFILES_DIR/load-env
+
+## 存在しない path の削除
+
+   path=(${^path}(N))

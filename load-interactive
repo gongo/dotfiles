@@ -1,0 +1,4 @@
+# -*-sh-*-
+
+source $DOTFILES_DIR/zsh/interactive
+source $DOTFILES_DIR/bundlizer/interactive
