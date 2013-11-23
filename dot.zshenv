@@ -26,13 +26,11 @@
    path=(
        $HOME/app/bin
        $HOME/bin
-       $HOME/.homebrew/bin
        /usr/local/bin
        /usr/bin
        /usr/sbin
        /sbin
        /bin
-       /usr/local/texlive/2012/bin/i386-linux
        $path
    )
 
