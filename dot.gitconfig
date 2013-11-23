@@ -15,11 +15,3 @@
 	diff = auto
 	branch = auto
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-
-[core]
-excludesfile = /opt/boxen/config/git/gitignore
-
-[hub]
-protocol = https
