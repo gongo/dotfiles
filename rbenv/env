@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
-if [ ! -d $HOME/.rbenv ] ; then
-    echo "rbenv is not installed"
-else
+if type rbenv &> /dev/null; then
+    eval "$(rbenv init - zsh)"
+elif [ -d $HOME/.rbenv ] ; then
     path=($HOME/.rbenv/bin $path)
     eval "$(rbenv init - zsh)"
+else
+    echo "rbenv is not installed"
 fi
