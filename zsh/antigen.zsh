@@ -1,7 +1,7 @@
 source $DOTFILES_ZSH_DIR/bundle/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
-antigen-lib
+antigen-use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle zsh-users/zsh-syntax-highlighting
