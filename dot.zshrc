@@ -1,6 +1,6 @@
 # -*-sh-*-
 
-autoload -U compinit
+autoload -U compinit compdef
 compinit
 
 autoload -U colors
