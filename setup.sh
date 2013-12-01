@@ -3,7 +3,7 @@
 dotfiles() {
     local current_dir=$(cd $(dirname $1) && pwd)
     for dot in `ls ${current_dir}/dot.*` ; do
-    	echo $dot
+        echo $dot
     done
 }
 
@@ -13,12 +13,14 @@ symlink() {
     local tofile="${todir}/${from##*/dot}"
 
     if [ ! -f $tofile -o -L $tofile ] ; then
-	ln -sf "${from}" "${tofile}"
+        ln -sf "${from}" "${tofile}"
     else
-	echo "${tofile} is exists and not symbolic link. Dot not overwrite."
+        echo "${tofile} is exists and not symbolic link. Dot not overwrite."
     fi
 }
 
 for f in `dotfiles $0` ; do
     symlink $f $HOME
 done
+
+git submodule update --init
