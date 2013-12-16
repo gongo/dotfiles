@@ -6,7 +6,6 @@
 
 ## Golang
 
-   export GOROOT=$(brew --prefix go)
    export GOPATH=$HOME/.go
 
 ## Add $PATH
