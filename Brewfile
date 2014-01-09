@@ -9,7 +9,9 @@ install gifsicle
 install global
 install gnu-sed
 install gnupg
+install go
 install graphviz
+install hub
 install jq
 install libyaml
 install mercurial
