@@ -16,6 +16,7 @@
    export LANG=ja_JP.UTF-8
    export LC_ALL=$LANG
    export SHELL=`which zsh`
+   export GOPATH=$HOME/.go
 
    [ -z "$ld_library_path" ] && typeset -T LD_LIBRARY_PATH ld_library_path
    [ -z "$include" ] && typeset -T INCLUDE include
@@ -26,6 +27,7 @@
    path=(
        $HOME/app/bin
        $HOME/bin
+       $GOPATH/bin
        /usr/local/bin
        /usr/bin
        /usr/sbin

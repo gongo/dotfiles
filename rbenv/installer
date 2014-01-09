@@ -13,7 +13,6 @@ rbenv_plugin_dir=$HOME/.rbenv/plugins
 
 # Install rbenv plugins
 
-  local plugins
   plugins=(
       "rkh/rbenv-update"
       "sstephenson/rbenv-default-gems"

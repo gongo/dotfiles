@@ -1,16 +1,31 @@
 # -*-sh-*-
 
-## Boxen
+## $DYLD_FALLBACK_LIBRARY_PATH を $dyld_fallback_library_path に紐付け
 
-   [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+    if [ -z "$dyld_fallback_library_path" ] ; then
+        typeset -T DYLD_FALLBACK_LIBRARY_PATH dyld_fallback_library_path
+    fi
 
-## Golang
+    # 重複削除 & 即座に export
+    typeset -xU dyld_fallback_library_path
 
-   export GOPATH=$HOME/.go
+## いろいろパス設定
+
+    dyld_fallback_library_path=(
+        /usr/lib
+        $HOME/.homebrew/lib
+        $dyld_fallback_library_path
+    )
+ 
+    include=(
+        $HOME/.homebrew/include
+        $include
+    )
 
 ## Add $PATH
 
    path=(
-       $GOPATH/bin
+       $HOME/.homebrew/bin
        $path
    )
+
