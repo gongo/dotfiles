@@ -1,3 +1,6 @@
 # -*-sh-*-
 
   eval "$(hub alias -s)"
+
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+

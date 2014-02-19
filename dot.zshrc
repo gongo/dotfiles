@@ -1,8 +1,5 @@
 # -*-sh-*-
 
-autoload -U compinit compdef
-compinit
-
 autoload -U colors
 colors
 
@@ -101,3 +98,7 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 source $DOTFILES_DIR/load-interactive
+
+autoload -U compinit compdef
+compinit -u
+
