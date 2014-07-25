@@ -102,3 +102,5 @@ source $DOTFILES_DIR/load-interactive
 autoload -U compinit compdef
 compinit -u
 
+p() { peco | while read LINE; do $@ $LINE; done }
+alias e='ghq list -p | p cd'
