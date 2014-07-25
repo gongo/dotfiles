@@ -1,1 +1,0 @@
-bindkey '^Xb' zaw-cdr
