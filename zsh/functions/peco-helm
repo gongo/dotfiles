@@ -13,6 +13,6 @@ function peco-helm () {
     zle clear-screen
 }
 
-zle -N peco_helm
-bindkey '^xb' peco_helm
+zle -N peco-helm
+bindkey '^xb' peco-helm
 

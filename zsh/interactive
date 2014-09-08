@@ -9,5 +9,3 @@
   for s in $DOTFILES_ZSH_DIR/*.zsh ; do
       source $s
   done
-
-  bindkey '^Xb' peco-cdr
