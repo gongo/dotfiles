@@ -1,45 +1,55 @@
 #!/usr/bin/env zsh
 
-    DOTFILES_DIR=$(() {
-            local self_file=$HOME/.zshenv
+#------------------------------
+# Global environment
+#------------------------------
 
-            if [ -L $self_file ] ; then
-                self_file=$(readlink $self_file)
-            fi
+export LANG=ja_JP.UTF-8
+export LC_ALL=$LANG
+export SHELL=`which zsh`
 
-            echo $(cd "$(dirname $self_file)" ; pwd)
-        }
-    )
+path=(
+    $HOME/bin
+    $path
+)
 
-## global environment
+#------------------------------
+# Development environment
+#------------------------------
 
-   export LANG=ja_JP.UTF-8
-   export LC_ALL=$LANG
-   export SHELL=`which zsh`
-   export GOPATH=$HOME/.go
+### Golang
 
-   [ -z "$ld_library_path" ] && typeset -T LD_LIBRARY_PATH ld_library_path
-   [ -z "$include" ] && typeset -T INCLUDE include
+if type go > /dev/null 2>&1 ; then
+    export GOPATH=$HOME/Workspaces
+    path=($GOPATH/bin $path)
+fi
 
-   # 重複する path を削除 & 即座に export
-   typeset -xU path cdpath fpath manpath ld_library_path include
+### Rbenv
 
-   path=(
-       $HOME/app/bin
-       $HOME/bin
-       $GOPATH/bin
-       /usr/local/bin
-       /usr/bin
-       /usr/sbin
-       /sbin
-       /bin
-       $path
-   )
+if type rbenv > /dev/null 2>&1 ; then
+    eval "$(rbenv init - zsh)"
+fi
 
-##
+### Homebrew
 
-   source $DOTFILES_DIR/load-env
+path=(
+    $HOME/.homebrew/bin
+    $path
+)
 
-## 存在しない path の削除
+#------------------------------
+# PATH environment
+#------------------------------
 
-   path=(${^path}(N))
+### Remove duplicated paths
+
+typeset -U path PATH
+
+### Allow the following paths:
+#
+# (N)  Existing directories
+# (-/) Directories and symbolic links that point to directories
+#
+path=(
+    ${^path}(N-/)
+)
