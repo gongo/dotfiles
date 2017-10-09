@@ -4,14 +4,15 @@
 # Global environment
 #------------------------------
 
+path=(
+    $HOME/bin
+    $HOME/.homebrew/bin
+    $path
+)
+
 export LANG=ja_JP.UTF-8
 export LC_ALL=$LANG
 export SHELL=`which zsh`
-
-path=(
-    $HOME/bin
-    $path
-)
 
 #------------------------------
 # Development environment
@@ -29,13 +30,6 @@ fi
 if type rbenv > /dev/null 2>&1 ; then
     eval "$(rbenv init - zsh)"
 fi
-
-### Homebrew
-
-path=(
-    $HOME/.homebrew/bin
-    $path
-)
 
 #------------------------------
 # PATH environment
