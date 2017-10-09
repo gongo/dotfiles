@@ -93,7 +93,8 @@ if [ -d $HOME/.zsh.d ] ; then
     for s in $HOME/.zsh.d/autoloads/*.zsh ; do
         source "$s"
     done
-fi
 
-p() { peco | while read LINE; do $@ $LINE; done }
-alias e='ghq list -p | p cd'
+    for s in $HOME/.zsh.d/functions/*.zsh ; do
+        source "$s"
+    done
+fi
