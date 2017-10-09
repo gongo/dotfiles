@@ -1,8 +1,0 @@
-# -*-sh-*-
-
-source $DOTFILES_DIR/zsh/interactive
-source $DOTFILES_DIR/bundlizer/interactive
-
-if [ -f $DOTFILES_DIR/dot.zshrc.$(uname -s) ] ; then
-    source $DOTFILES_DIR/dot.zshrc.$(uname -s)
-fi
