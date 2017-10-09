@@ -1,4 +1,7 @@
-# -*-sh-*-
+# Local Variables:
+# mode: sh
+# eval: (sh-set-shell "zsh")
+# End:
 
 autoload -U colors
 colors
@@ -6,11 +9,13 @@ colors
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-zstyle ':completion:*' list-separator '-->'
-zstyle ':completion:*' use-cache true
-zstyle ':completion:*:default' menu select=1
 
-# 補完関数の表示を強化する
+
+autoload -U compinit
+compinit
+
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
@@ -22,28 +27,13 @@ zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAU
 # マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 
-fpath=(~/.zsh/functions/ $fpath)
-
-####################
-# environment
-####################
-
 export LANG=ja_JP.UTF8
 export LC_ALL=ja_JP.UTF-8
 export EDITOR="emacs -q -nw"
-export CVS_RSH=ssh
-export CVSEDITOR=$EDITOR
 
-alias -g L='| lv'
-alias -g G='| grep'
-alias -g X='| xargs'
 alias -g em='emacsclient --tty'
 alias ll="ls -l"
 alias tmux="tmux -2"
-
-##########
-# path
-##########
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -96,11 +86,6 @@ zstyle ':chpwd:*' recent-dirs-max 5000
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
-
-source $DOTFILES_DIR/load-interactive
-
-autoload -U compinit compdef
-compinit -u
 
 p() { peco | while read LINE; do $@ $LINE; done }
 alias e='ghq list -p | p cd'
