@@ -87,5 +87,13 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
+if [ -d $HOME/.zsh.d ] ; then
+    source $HOME/.zsh.d/zplug.zsh
+
+    for s in $HOME/.zsh.d/autoloads/*.zsh ; do
+        source "$s"
+    done
+fi
+
 p() { peco | while read LINE; do $@ $LINE; done }
 alias e='ghq list -p | p cd'
