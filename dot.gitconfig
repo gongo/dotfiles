@@ -21,3 +21,6 @@
 
 [ghq]
     root = ~/Workspaces/src
+
+[core]
+    editor = "emacsclient --tty --alternate-editor emacs"
