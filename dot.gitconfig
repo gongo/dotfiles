@@ -6,6 +6,7 @@
     st = status -sb
     co = checkout
     ci = commit
+    fpr = "!f(){ gh pr checkout $1 -b pr$1; };f"
 
 [push]
     default = tracking
