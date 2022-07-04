@@ -25,7 +25,13 @@
 
 [core]
     editor = "emacsclient --tty --alternate-editor emacs"
-    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+    pager = delta
 
 [interactive]
     diffFilter = delta --color-only
+
+[delta]
+    line-numbers = true
+    navigate = true
+    side-by-side = true
+    syntax-theme = Monokai Extended
