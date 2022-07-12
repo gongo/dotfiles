@@ -28,6 +28,12 @@ export SHELL=`which zsh`
 # Development environment
 #------------------------------
 
+### Homebrew
+
+if ! type brew > /dev/null 2>&1 ; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 ### Golang
 
 if type go > /dev/null 2>&1 ; then
