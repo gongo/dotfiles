@@ -3,12 +3,6 @@
 # eval: (sh-set-shell "zsh")
 # End:
 
-autoload -U colors
-colors
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
 
 
 autoload -U compinit
@@ -20,20 +14,16 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
 zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+zstyle ':completion:*:options' description 'yes'
 
 # マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 
-export LANG=ja_JP.UTF8
-export LC_ALL=ja_JP.UTF-8
 export EDITOR="emacs -q -nw"
 
 alias -g em='emacsclient --tty'
 alias ll="ls -l"
-alias tmux="tmux -2"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
