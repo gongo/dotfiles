@@ -11,6 +11,7 @@ setopt no_global_rcs
 #------------------------------
 
 path=(
+    $HOME/.local/bin
     $HOME/bin
     /usr/local/bin
     /usr/bin
@@ -34,24 +35,16 @@ if ! type brew > /dev/null 2>&1 ; then
     eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
+### Mise
+
+if type mise > /dev/null 2>&1 ; then
+    eval "$(mise activate zsh)"
+fi
+
 ### Golang
 
-if type go > /dev/null 2>&1 ; then
-    export GOPATH=$HOME/Workspaces
-    path=($GOPATH/bin $path)
-fi
-
-### Rbenv
-
-if type rbenv > /dev/null 2>&1 ; then
-    export RBENV_ROOT="$(rbenv root)"
-    eval "$(rbenv init - zsh)"
-fi
-
-if type nodenv > /dev/null 2>&1 ; then
-    export NODENV_ROOT="$(nodenv root)"
-    eval "$(nodenv init - zsh)"
-fi
+export GOPATH=$HOME/Workspaces
+path=($GOPATH/bin $path)
 
 #------------------------------
 # PATH environment

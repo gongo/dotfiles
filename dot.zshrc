@@ -98,7 +98,3 @@ if [ -d $HOME/.zsh.d ] ; then
         source "$s"
     done
 fi
-
-eval "$(rbenv init - zsh)"
-eval "$(nodenv init -)"
-eval "$(direnv hook zsh)"
