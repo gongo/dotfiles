@@ -78,7 +78,7 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 if [ -d $HOME/.zsh.d ] ; then
-    source $HOME/.zsh.d/zplug.zsh
+    source $HOME/.zsh.d/sheldon.zsh
 
     for s in $HOME/.zsh.d/autoloads/*.zsh ; do
         source "$s"

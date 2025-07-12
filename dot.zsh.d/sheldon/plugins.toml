@@ -1,0 +1,26 @@
+# Sheldon configuration file
+# https://sheldon.cli.rs/
+
+shell = "zsh"
+
+[plugins]
+
+# Completion enhancements
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# Syntax highlighting - loaded last
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+# Async library for pure prompt
+[plugins.zsh-async]
+github = "mafredri/zsh-async"
+
+# Pure prompt theme
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["pure.zsh"]
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}source \"{{ file }}\"{% endfor %}{{ hooks?.post | nl }}"
