@@ -38,9 +38,8 @@ fi
 ### Mise
 
 if type mise > /dev/null 2>&1 ; then
-    if [[ -o interactive ]]; then
-        eval "$(mise activate zsh)"
-    else
+    eval "$(mise activate zsh)"
+    if [[ ! -o interactive ]]; then
         eval "$(mise activate --shims zsh)"
     fi
 fi
